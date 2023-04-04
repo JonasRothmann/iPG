@@ -112,18 +112,18 @@ function on_question_end() {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
-			"Authorization": `Bearer ${documnet.getElementById("OPENAI_API_KEY").value}`
+			"Authorization": `Bearer ${localStorage.getItem("OPENAI_API_KEY")}`
 		},
 		body: JSON.stringify({
 			model: "gpt-3.5-turbo",
 			messages: [
 				{
 					role: "system",
-					content: "You are a helpful assistant trained to analyze and grade responses to Y-Combinator interview simulator questions. Fix any grammatical errors first and then rate it based on the response with the fixed grammar."
+					content: "You are a helpful assistant trained to analyze and grade responses to Y-Combinator interview simulator questions. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that."
 				},
 				{
 					role: "user",
-					content: `Please analyze and grade the following response to a Y-Combinator interview simulator question. Provide a score from 1 to 10, with 10 being the highest, along with feedback on what was good, what was bad, suggestions for improvement and an example of a better response.
+					content: `Please analyze and grade the following response to a Y-Combinator interview simulator question. Provide a score from 1 to 10, with 10 being the highest, along with feedback on what was good, what was bad, suggestions for improvement and an example of a better response. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that.
 
 					Company description: ${companyDescription}
 					Question: ${question}

@@ -123,7 +123,7 @@ function on_question_end() {
 				},
 				{
 					role: "user",
-					content: `Please analyze and grade the following response to a Y-Combinator interview simulator question. Provide a score from 1 to 10, with 9 being a great answer but still optainable, along with feedback on what was good, what was bad, suggestions for improvement and an example of a better response. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that.
+					content: `Please analyze and grade the following response to a Y-Combinator interview simulator question. Provide a score from 1 to 10, with 9 being a great answer but still optainable, along with feedback on what was good, what was bad, suggestions for improvement and an example of a better response. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that. The user is given 50 seconds to respond to the question, so you should not expect a super detailed response.
 
 					Company description: ${companyDescription}
 					Question: ${question}

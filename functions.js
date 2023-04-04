@@ -104,7 +104,7 @@ function on_question_end() {
 	document.querySelector('#timer').classList.add('hide');
 	document.querySelector('#loading').classList.add('hide');
 
-	//const companyDescription = document.querySelector('#company-description').value;
+	const companyDescription = localStorage.getItem("companyDescription");
 	const question = document.querySelector('#question').innerHTML;
 	const response = document.querySelector('#response').innerHTML;
 
@@ -112,7 +112,7 @@ function on_question_end() {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
-			"Authorization": `Bearer ${OPENAI_API_KEY}`
+			"Authorization": `Bearer ${documnet.getElementById("OPENAI_API_KEY").value}`
 		},
 		body: JSON.stringify({
 			model: "gpt-3.5-turbo",

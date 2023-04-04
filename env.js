@@ -1,2 +1,2 @@
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "OPENAI_API_KEY"; 
 const companyDescription = "Hansa is a B2B sales platform seeking seed-funding. It provides a streamlined sales process for small businesses to sell to large enterprises. It is a SaaS product that is currently in beta. The product is a CRM, sales pipeline, and sales automation.";

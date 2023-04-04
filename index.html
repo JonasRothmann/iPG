@@ -5,37 +5,37 @@
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+<script type="text/javascript" src="env.js"></script>
 <script type="text/javascript" src="data.js"></script>
 <script type="text/javascript" src="functions.js"></script>
 <script type="text/javascript">
-var timer = 15;
-
-
 // Randomise Questions & Tips
 q.sort(function() {return 0.5 - Math.random()})
-tips.sort(function() {return 0.5 - Math.random()})
+//tips.sort(function() {return 0.5 - Math.random()})
 
 
 // End Questions
 q.push('done');
 
 
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', function () {
 	next_q();
 	timer_tick();
 	display_tip();
 });
 
 
+document.addEventListener('keypress', function (e) {
 
-$(document).keypress(function(e) {
-
-	switch (e.which)
-	{
+	switch (e.which) {
 		case 13:
 			// Next Question - Return (13)
 			next_q();
+			break;
+
+		case 114:
+			// Retry - r (114)
+			retry();
 			break;
 
 		case 32:
@@ -45,9 +45,8 @@ $(document).keypress(function(e) {
 
 		case 110:
 			// Doesn't Do Anything, Move Along
-			$('body').append('<div class="egg"><iframe width="420" height="315" src="http://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
+			document.querySelector('body').insertAdjacentHTML('beforeend', '<div class="egg"><iframe width="420" height="315" src="http://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
 			break;
-
 	}
 });
 </script>
@@ -65,10 +64,14 @@ $(document).keypress(function(e) {
 
 
 <!-- Question Display --->
-<div id="question">
+<div id="question" class="transparent">
 	&nbsp;
 </div>
 
+<!-- Question Display --->
+<div class="response">
+	<div id="response"></div><div id="loading" class="hide"></div>
+</div>
 
 <!-- Timer -->
 <div id="timer">
@@ -79,6 +82,9 @@ $(document).keypress(function(e) {
 <!-- Dissapointed Paul Graham -->
 <div class="pg hide">
 	<img src="pg.jpg" width="400" height="300" />
+</div>
+
+<div id="openai">
 </div>
 
 

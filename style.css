@@ -11,6 +11,7 @@ a:hover {color: #336699; text-decoration: underline;}
 
 #question {
 	margin: 100px 0; padding: 0 50px;
+	width: 
 	
 	color: #333;
 	font-size: 64px; font-weight: bold;
@@ -27,6 +28,23 @@ a:hover {color: #336699; text-decoration: underline;}
 	font-size: 24px;
 	text-align: center;
 }
+
+.response {
+	display: flex;
+	flex-direction: row;
+	align-items: bottom;
+	justify-content: center;
+	margin: 0 auto 50px auto; padding: 4px 0;
+	
+	color: #333;
+	font-size: 18px;
+	text-align: center;
+
+	max-width: 680px;
+	margin: 0 auto 24px;
+	line-height: 1.35;
+}
+
 .warning {background: #ffcc66;}
 .fail {background: #ff9999;}
 
@@ -64,6 +82,7 @@ a:hover {color: #336699; text-decoration: underline;}
 
 .pg {margin-bottom: 50px; text-align: center;}
 .hide {display: none;}
+.transparent {opacity: 0; pointer-events: none; cursor: default; } 
 
 .footer {
 	margin-bottom: 50px;
@@ -85,4 +104,16 @@ a:hover {color: #336699; text-decoration: underline;}
 	border: 2px #ccc solid;
 	border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;
 	box-shadow: #ccc 0 0 20px;
+}
+
+#loading {
+  width: 3ch;
+	left-align: left;
+}
+
+#openai {
+	white-space: pre-wrap;
+	max-width: 680px;
+	margin: 0 auto 24px;
+	line-height: 1.5;
 }

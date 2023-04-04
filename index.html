@@ -5,49 +5,78 @@
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 
-<script type="text/javascript" src="env.js"></script>
 <script type="text/javascript" src="data.js"></script>
 <script type="text/javascript" src="functions.js"></script>
 <script type="text/javascript">
-// Randomise Questions & Tips
-q.sort(function() {return 0.5 - Math.random()})
-//tips.sort(function() {return 0.5 - Math.random()})
-
-
-// End Questions
-q.push('done');
-
 
 document.addEventListener('DOMContentLoaded', function () {
-	next_q();
-	timer_tick();
-	display_tip();
-});
+const handleData = () => {
+	const OPENAI_API_KEY = localStorage.getItem("OPENAI_API_KEY") || document.getElementById("OPENAI_API_KEY").value;
+	const companyDescription = localStorage.getItem("company_description") || document.getElementById("company_description").value;
+
+	
+	if (OPENAI_API_KEY.length > 50 && companyDescription.length > 10) {
+		
+		if(!localStorage.getItem("OPENAI_API_KEY")) {
+			localStorage.setItem("OPENAI_API_KEY", OPENAI_API_KEY);
+			localStorage.setItem("company_description", companyDescription);
+		}
+
+		document.querySelector('.overlay').classList.add('hide');
+		document.querySelector('.modal').classList.add('hide');
+		
+		// Randomise Questions & Tips
+		q.sort(function() {return 0.5 - Math.random()})
+		//tips.sort(function() {return 0.5 - Math.random()})
 
 
-document.addEventListener('keypress', function (e) {
+		// End Questions
+		q.push('done');
 
-	switch (e.which) {
-		case 13:
-			// Next Question - Return (13)
+
 			next_q();
-			break;
+			timer_tick();
+			display_tip();
 
-		case 114:
-			// Retry - r (114)
-			retry();
-			break;
 
-		case 32:
-			// Restart Timer - Space (32)
-			timer_restart();
-			break;
+		document.addEventListener('keypress', function (e) {
 
-		case 110:
-			// Doesn't Do Anything, Move Along
-			document.querySelector('body').insertAdjacentHTML('beforeend', '<div class="egg"><iframe width="420" height="315" src="http://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
-			break;
+			switch (e.which) {
+				case 13:
+					// Next Question - Return (13)
+					next_q();
+					break;
+
+				case 114:
+					// Retry - r (114)
+					retry();
+					break;
+
+				case 32:
+					// Restart Timer - Space (32)
+					timer_restart();
+					break;
+
+				case 110:
+					// Doesn't Do Anything, Move Along
+					document.querySelector('body').insertAdjacentHTML('beforeend', '<div class="egg"><iframe width="420" height="315" src="http://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
+					break;
+			}
+		});
+  } else {
+    return false
+  }
+}
+
+document.getElementById("form").addEventListener("submit", (e) => {
+	e.preventDefault();
+	const res = handleData();
+
+	if (res === false) {
+		alert("Please enter a valid OpenAI API Key and Company Description");
 	}
+});
+handleData(); // handle data on page load
 });
 </script>
 
@@ -87,10 +116,15 @@ document.addEventListener('keypress', function (e) {
 <div id="openai">
 </div>
 
+<div class="overlay">
 
-<!-- Tips Display -->
-<div class="tip">
-	<strong>ProTip:</strong> <span id="tip">&nbsp;</span>
+	<form id="form" class="modal">
+		<h1 class="modal-title">We need a company description and openai key to start</h1>
+		<div>OpenAI Key: <input type="secret" minlength="24" id="OPENAI_API_KEY" /></div>
+	
+		<div>Company Description: <textarea rows="4" id="company_description"></textarea></div>
+		<button id="submit">Submit</button>
+	</form>
 </div>
 
 
@@ -112,6 +146,8 @@ document.addEventListener('keypress', function (e) {
 	<a href="https://jamescun.com/">James Cunningham</a> and
 	<a href="https://entrevate.com/">Colin Hayhurst</a> for
 	<a href="https://goscale.com/">GoScale</a>&#39;s YC S12 Interview
+	<br>	
+	<a onclick="localStorage.clear();" class="clear">Clear data</a>
 </div>
 
 </body>

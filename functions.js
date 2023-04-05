@@ -101,6 +101,7 @@ function timer_restart() {
 }
 
 function on_question_end() {
+	recognition.abort();
 	document.querySelector('#timer').classList.add('hide');
 	document.querySelector('#loading').classList.add('hide');
 

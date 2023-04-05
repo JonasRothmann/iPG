@@ -52,6 +52,13 @@ const handleData = () => {
 					retry();
 					break;
 
+				// if m is pressed, then clear timer and run on_question_end()
+				case 109:
+					// Manual End - m (109)
+					clearInterval(timerId);
+					on_question_end();
+					break;
+
 				case 32:
 					// Restart Timer - Space (32)
 					timer_restart();
@@ -134,6 +141,9 @@ handleData(); // handle data on page load
 
 	<div class="key key-space">space</div>
 	<div class="act">to restart timer</div>
+
+	<div class="key key-return">m</div>
+	<div class="act">end question</div>
 
 	<div class="key key-return">return</div>
 	<div class="act">to next question</div>

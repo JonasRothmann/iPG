@@ -148,14 +148,14 @@ function on_question_end() {
 	})
 		.then((response) => response.json())
 		.then((data) => {
+			if(!data) throw new Error("OpenAI returned empty body")
+			else if (data.error) throw new Error(data.error)
+			else if (!data.choices.length) throw new Error("OpenAI sent invalid response format")
 			console.log(data, data.choices[0].message.content)
 
 			document.querySelector('#openai').innerHTML = data.choices[0].message.content;
 		})
 		.catch((error) => {
-		if(!data) throw new Error("OpenAI returned empty body")
-		else if (data.error) throw new Error(data.error)
-		else if (!data.choices.length) throw new Error("OpenAI sent invalid response format")
 		console.error("Error:", error);
 		alert(`An error occurred: ${error.message}`); 
 		})

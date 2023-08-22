@@ -120,11 +120,11 @@ function on_question_end() {
 			messages: [
 				{
 					role: "system",
-					content: "You are a helpful assistant trained to analyze and grade responses to Y-Combinator interview simulator questions. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that. The user data may contain sound-alike words and will lack punctuation. Do not criticize the user for this as it is a by-product of the speech-to-text."
+					content: "You are a helpful assistant trained to analyze and grade responses to Y-Combinator interview simulator questions. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that."
 				},
 				{
 					role: "user",
-					content: `Please analyze and grade the following response to a Y-Combinator interview simulator question. Provide a score from 1 to 10, with 9 being a great answer but still optainable, along with feedback on what was good, what was bad, suggestions for improvement and an example of a better response. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that. The user is given 50 seconds to respond to the question, so you should not expect a super in-depth response. If the user does not give a response at all, then forgo giving feedback and ask the user to try again.
+					content: `Please analyze and grade the following response to a Y-Combinator interview simulator question. Provide a score from 1 to 10, with 8 being a great answer but still optainable, along with feedback on what was good, what was bad, suggestions for improvement and an example of a better response. You ignore grammatical errors as the user data is generated from speech-to-text, as well as other errors that may occour from that. The user is given 50 seconds to respond to the question, so you should not expect a super in-depth response. If the user does not give a response at all, then forgo giving feedback and ask the user to try again. A 5/10 response should be middling and somewhat answer the question, but have plenty of room for improvement. A 10/10 should be an answer that is precise, intelligent, and coherent. 
 
 					Company description: ${companyDescription}
 					Question: ${question}

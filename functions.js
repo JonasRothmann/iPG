@@ -152,7 +152,11 @@ function on_question_end() {
 
 			document.querySelector('#openai').innerHTML = data.choices[0].message.content;
 		})
-		.catch((error) => console.error("Error:", error));
+		.catch((error) => {
+		console.error("Error:", error);
+		alert(`An error occurred: ${error.message}`); 
+		})
+
 }
 
 

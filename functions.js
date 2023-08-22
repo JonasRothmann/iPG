@@ -29,7 +29,7 @@ function retry(question) {
 
 /* --- Timer Functions --- */
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition;
 if (!SpeechRecognition) console.warn("not supported")
 
 

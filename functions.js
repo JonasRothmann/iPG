@@ -104,6 +104,7 @@ function on_question_end() {
 	recognition.abort();
 	document.querySelector('#timer').classList.add('hide');
 	document.querySelector('#loading').classList.add('hide');
+	console.log(localStorage.getItem("OPENAI_API_KEY"));
 
 	const companyDescription = localStorage.getItem("companyDescription");
 	const question = document.querySelector('#question').innerHTML;
@@ -156,7 +157,7 @@ function on_question_end() {
 			document.querySelector('#openai').innerHTML = data.choices[0].message.content;
 		})
 		.catch((error) => {
-		console.error("Error:", error);
+		console.error("Error:", JSON.stringify(error));
 		alert(`An error occurred: ${error.message}`); 
 		})
 

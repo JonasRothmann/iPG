@@ -17,10 +17,9 @@ const handleData = () => {
 	
 	if (OPENAI_API_KEY.length > 50 && companyDescription.length > 10) {
 		
-		if(!localStorage.getItem("OPENAI_API_KEY")) {
-			localStorage.setItem("OPENAI_API_KEY", OPENAI_API_KEY);
-			localStorage.setItem("company_description", companyDescription);
-		}
+		localStorage.clear(OPENAI_API_KEY);
+		localStorage.setItem("OPENAI_API_KEY", OPENAI_API_KEY);
+		localStorage.setItem("company_description", companyDescription);
 
 		document.querySelector('.overlay').classList.add('hide');
 		document.querySelector('.modal').classList.add('hide');

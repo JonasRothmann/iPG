@@ -136,15 +136,15 @@ handleData(); // handle data on page load
 
 <!-- Keyboard Control Reference -->
 <div class="controls">
-	<h1>Key Controls</h1>
+	<h1>Key/Button Controls</h1> <br>	
 
-	<div class="key key-space">space</div>
+	<div onclick="timer_restart();" class="key key-space">space</div>
 	<div class="act">to restart timer</div>
 
-	<div class="key key-return">m</div>
+	<div onclick="clearInterval(timerId); on_question_end();" class="key key-return">m</div>
 	<div class="act">end question</div>
 
-	<div class="key key-return">return</div>
+	<div onclick="next_q();" class="key key-return">return</div>
 	<div class="act">to next question</div>
 </div>
 
@@ -155,8 +155,10 @@ handleData(); // handle data on page load
 	<a href="https://jamescun.com/">James Cunningham</a> and
 	<a href="https://entrevate.com/">Colin Hayhurst</a> for
 	<a href="https://goscale.com/">GoScale</a>&#39;s YC S12 Interview
-	<br>	
-	<a onclick="localStorage.clear();" class="clear">Clear data</a>
+	<br>
+	AI-enabled version by Steven Wang, Jonas Rothmann Hjalager, and Edward Loh
+	<br>
+	<a onclick="localStorage.clear(); location.reload();" class="clear">Clear data</a>
 </div>
 
 </body>

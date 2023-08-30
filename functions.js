@@ -104,15 +104,17 @@ function on_question_end() {
 	recognition.abort();
 	document.querySelector('#timer').classList.add('hide');
 	document.querySelector('#loading').classList.add('hide');
+	console.log(localStorage.getItem("OPENAI_API_KEY"));
 
 	const companyDescription = localStorage.getItem("companyDescription");
 	const question = document.querySelector('#question').innerHTML;
 	const response = document.querySelector('#response').innerHTML;
 
-	fetch("https://topsecretdonotlooklalaladeeda.vercel.app/openai-api", {
+	fetch("https://api.openai.com/v1/chat/completions", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
+			"Authorization": `Bearer ${localStorage.getItem("OPENAI_API_KEY")}`
 		},
 		body: JSON.stringify({
 			model: "gpt-3.5-turbo",

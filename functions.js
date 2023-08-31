@@ -109,7 +109,7 @@ function on_question_end() {
 	const question = document.querySelector('#question').innerHTML;
 	const response = document.querySelector('#response').innerHTML;
 
-	fetch("https://topsecretdonotlooklalaladeeda.vercel.app/openai-api", {
+	fetch("https://topsecretdonotlooklalaladeeda.vercel.app/api/openai-api", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

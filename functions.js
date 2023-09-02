@@ -104,19 +104,12 @@ function on_question_end() {
 	recognition.abort();
 	document.querySelector('#timer').classList.add('hide');
 	document.querySelector('#loading').classList.add('hide');
-	console.log(localStorage.getItem("OPENAI_API_KEY"));
 
 	const companyDescription = localStorage.getItem("companyDescription");
 	const question = document.querySelector('#question').innerHTML;
 	const response = document.querySelector('#response').innerHTML;
 
-	fetch("https://api.openai.com/v1/chat/completions", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"Authorization": `Bearer ${localStorage.getItem("OPENAI_API_KEY")}`
-		},
-		body: JSON.stringify({
+	fetch("https://ipg-key.vercel.app/api/openai-api", {
 			model: "gpt-3.5-turbo",
 			messages: [
 				{
@@ -145,7 +138,6 @@ function on_question_end() {
 			],
 			temperature: 0.7,
 			max_tokens: 2000
-		})
 	})
 		.then((response) => response.json())
 		.then((data) => {

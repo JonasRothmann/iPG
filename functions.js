@@ -114,7 +114,7 @@ function on_question_end() {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: {
+		body: JSON.stringify({
 			model: "gpt-3.5-turbo",
 			messages: [
 				{
@@ -143,7 +143,7 @@ function on_question_end() {
 			],
 			temperature: 0.7,
 			max_tokens: 2000
-		}
+		})
 	})
 		.then((response) => response.json())
 		.then((data) => {

@@ -110,6 +110,11 @@ function on_question_end() {
 	const response = document.querySelector('#response').innerHTML;
 
 	fetch("https://ipg-key.vercel.app/api/openai-api", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
 			model: "gpt-3.5-turbo",
 			messages: [
 				{
@@ -138,6 +143,7 @@ function on_question_end() {
 			],
 			temperature: 0.7,
 			max_tokens: 2000
+		})
 	})
 		.then((response) => response.json())
 		.then((data) => {
